@@ -1,5 +1,5 @@
 {% set name = "edlib" %}
-{% set version = "1.3.9" %}
+{% set version = "1.3.9.post1" %}
 
 
 package:
@@ -8,16 +8,17 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/edlib-{{ version }}.tar.gz
-  sha256: 64c3dfab3ebe3e759565a0cc71eb4df23cf3ce1713fd558af3c473dddc2a3766
+  sha256: b0fb6e85882cab02208ccd6daa46f80cb9ff1d05764e91bf22920a01d7a6fbfa
 
 build:
-  number: 2
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - make
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - cmake
   host:
     - cython
